@@ -12,7 +12,7 @@ local function main()
         error("please input your file name")
     end
     local file = io.open(file_name, "r")    -- 使用 io.open() 函数，以只读模式打开文件
-    local codes = file:read("a")
+    local codes = file:read("*a")
     file:close()
 
     backend.execute(codes)
