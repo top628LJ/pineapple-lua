@@ -100,13 +100,16 @@ _M.is_ignored = is_ignored
 local function match_token(self)
     local var = self.source_code[1];
 
+    -- match ignored token
     if is_ignored(self) then
         return self.line_num, TOKEN_TYPE.EOF, "EOF"
     end
 
+    -- it is end of source_code
     if #self.source_code <= 0 then
         return self.line_num, TOKEN_TYPE.EOF, "EOF"
     end
+
     -- match single token
     if var == "$" then
         self:skip_source_code(1)
